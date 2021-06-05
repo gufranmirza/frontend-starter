@@ -1,1 +1,1 @@
-# didactic-computing-machine
+# recruiter-ui
