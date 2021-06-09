@@ -144,9 +144,8 @@ class EnhancedDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          // eslint-disable-line
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />), // eslint-disable-line
-        }); // eslint-disable-line
+        enhanceApp: App => props => sheet.collectStyles(<App {...props} />), // eslint-disable-line
+      }); // eslint-disable-line
 
       const initialProps = await Document.getInitialProps(ctx);
       return {

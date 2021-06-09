@@ -57,13 +57,14 @@
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/quotes": [
           2,
-          "backtick",
+          "single",
           {
             "avoidEscape": true
           }
         ],
         "object-curly-newline": "off",
-        "arrow-parens": "off"
+        "arrow-parens": "off",
+        "implicit-arrow-linebreak": "off"
       }
     }
   ],
