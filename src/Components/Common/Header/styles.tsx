@@ -24,4 +24,27 @@ const Container = styled.div`
   }
 `;
 
-export { Root, Container };
+const ButtonsLeft = styled.div`
+  display: block;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MenuLeft = styled.div`
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const MenuButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export { Root, Container, ButtonsLeft, MenuLeft, MenuButton };

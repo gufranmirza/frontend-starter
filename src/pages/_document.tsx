@@ -134,6 +134,11 @@ const Tags = (): Array<any> => [
     key="28"
   />,
   <link rel="manifest" href="/favicons/manifest.json" key="29" />,
+  <link
+    key="2"
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />,
 ];
 
 class EnhancedDocument extends Document {
