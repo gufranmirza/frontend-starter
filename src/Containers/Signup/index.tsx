@@ -14,7 +14,7 @@ class Signup extends React.Component {
     this.state = {};
   }
 
-  render() {
+  render(): any {
     return (
       <div>
         <styles.Root>

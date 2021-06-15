@@ -22,7 +22,7 @@ class Hero extends React.Component<Props> {
     this.state = {};
   }
 
-  render() {
+  render(): any {
     return (
       <styles.Root1 Padding="60px 0">
         <AppContainer>

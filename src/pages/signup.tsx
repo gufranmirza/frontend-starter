@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Title from '@/Components/Title';
 import Header from '@/Components/Common/Header';
 import Signup from '@/Containers/Signup';
 

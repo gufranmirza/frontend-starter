@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Typography from 'antd/lib/typography';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ import * as styles from './styles';
 
 const { Title } = Typography;
 
-function validate(value: unknown) {
+function validate(value: unknown): string {
   if (value !== 'open sesame') {
     return 'INCORRECT_PHRASE';
   }
@@ -24,12 +24,11 @@ function validate(value: unknown) {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default class extends Component<{}> {
-  handleSubmit = (formState: { command: string }) => {
+  handleSubmit = (): void => {
     // you can now do stuff with the form.
-    console.log('form state', formState);
   };
 
-  render() {
+  render(): any {
     return (
       <styles.Root>
         <Form onSubmit={this.handleSubmit}>

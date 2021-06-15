@@ -35,7 +35,7 @@ const Right: React.FC<Props> = ({ title, description, features }) => (
       {description}
     </Title>
     {features.map(index => (
-      <Paragraph style={{ marginBottom: '0.5em;' }}>
+      <Paragraph key={index} style={{ marginBottom: '0.5em' }}>
         <CheckCircleFilled
           style={{ marginRight: '5px', fontSize: '16px', color: vars.Blue8 }}
         />

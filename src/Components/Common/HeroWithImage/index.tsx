@@ -1,5 +1,4 @@
 import React from 'react';
-import { AppContainer } from '@/core/Components/Containers';
 import Right from './Right';
 import Left from './Left';
 
@@ -23,7 +22,7 @@ class Hero extends React.Component<Props> {
     this.state = {};
   }
 
-  render() {
+  render(): any {
     const {
       margin,
       padding,

@@ -12,7 +12,7 @@ import * as styles from './styles';
 
 const menu = (
   <Menu>
-    <Menu.Item key="0">
+    <Menu.Item key="1">
       <styles.MenuButton>
         <Link href="/signup">
           <a href="/signup">
@@ -61,7 +61,7 @@ const Title: React.FC<{}> = () => (
   <styles.Root>
     <AppContainer>
       <styles.Container>
-        <div />
+        <div> JOBX </div>
         <div>
           <styles.ButtonsLeft>
             <Link href="/signup">
