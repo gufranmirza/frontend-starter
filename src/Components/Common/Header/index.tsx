@@ -13,7 +13,14 @@ import * as styles from './styles';
 const menu = (
   <Menu>
     <Menu.Item key="1">
-      <styles.MenuButton>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
         <Link href="/signup">
           <a href="/signup">
             <Button
@@ -52,7 +59,7 @@ const menu = (
             </Button>
           </a>
         </Link>
-      </styles.MenuButton>
+      </div>
     </Menu.Item>
   </Menu>
 );
@@ -61,7 +68,7 @@ const Title: React.FC<{}> = () => (
   <styles.Root>
     <AppContainer>
       <styles.Container>
-        <div> JOBX </div>
+        <div> JOBX - TBD </div>
         <div>
           <styles.ButtonsLeft>
             <Link href="/signup">

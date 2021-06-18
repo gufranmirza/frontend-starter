@@ -3,7 +3,7 @@ import * as styles from './styles';
 
 const Left: React.FC<{}> = () => (
   <styles.Image>
-    <img alt="" src="/illustrations/profile_data.svg" />
+    <img alt="" src="/illustrations/welcoming.svg" />
   </styles.Image>
 );
 

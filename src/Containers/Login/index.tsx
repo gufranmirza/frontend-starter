@@ -3,12 +3,15 @@ import { AppContainer } from '@/core/Components/Containers';
 import HeroWithImage from '@/Components/Common/HeroWithImage';
 import * as vars from '@/core/Theme/vars';
 import Footer from '@/Components/Common/Footer';
+import Typography from 'antd/lib/typography';
 import Right from './Right';
 import Left from './Left';
 
 import * as styles from './styles';
 
-class Signup extends React.Component {
+const { Title } = Typography;
+
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -29,6 +32,23 @@ class Signup extends React.Component {
             </styles.Container>
           </AppContainer>
         </styles.Root>
+        <styles.Info>
+          <Title
+            level={4}
+            style={{
+              fontWeight: 'normal',
+              color: vars.HeadingColor1,
+              margin: 0,
+              fontSize: '18px',
+              textAlign: 'center',
+              paddingTop: '25px',
+              paddingBottom: '25px',
+            }}
+          >
+            After submitting login details, we&apos;ll send you an email link to
+            login .
+          </Title>
+        </styles.Info>
         <HeroWithImage
           title="Share Your Company’s Story"
           description="The best candidates aren’t job seekers: they’re purpose seekers. Our content and events will share your company’s mission, vision and culture with India's tech community."
@@ -38,7 +58,7 @@ class Signup extends React.Component {
             'Exclusive Recruitment Events',
           ]}
           image="/illustrations/company-story-graphic.png"
-          margin="60px 0px 0px 0"
+          margin="5px 0px 0px 0"
           padding="50px 0"
           imagePosition="right"
           background={vars.Blue1}
@@ -77,4 +97,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default Login;
