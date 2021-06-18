@@ -11,7 +11,7 @@ const Right: React.FC<{}> = () => (
     {' '}
     <Title style={{ marginBottom: '0.4em', maxWidth: '450px' }}>
       {' '}
-      Start Hiring With US
+      Start Hiring With Us
     </Title>
     <Title
       level={4}

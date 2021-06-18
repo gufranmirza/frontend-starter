@@ -23,9 +23,7 @@ const Right: React.FC<{}> = () => (
         fontSize: '18px',
       }}
     >
-      {' '}
-      Hire anywhere in the world for free with smart-filtering and
-      standardization of applications.{' '}
+      Login to manage your job postings, shortlist candidates and post new jobs.
     </Title>
     <Form />
   </styles.Root>

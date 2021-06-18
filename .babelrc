@@ -10,6 +10,9 @@
         },
         "extensions": [".js", ".ts", ".jsx", ".tsx"]
       }
+    ],
+    ["styled-components", 
+      { "ssr": true }
     ]
   ]
 }

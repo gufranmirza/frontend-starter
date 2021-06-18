@@ -111,7 +111,12 @@ export default class extends Component<{}> {
                 )}
               </Field>
               <FormFooter>
-                <Button shouldFitContainer type="submit" appearance="primary">
+                <Button
+                  style={{ height: '40px' }}
+                  shouldFitContainer
+                  type="submit"
+                  appearance="primary"
+                >
                   Sign Up & Post A Job
                 </Button>
               </FormFooter>
@@ -121,7 +126,7 @@ export default class extends Component<{}> {
         <Title
           level={5}
           style={{
-            marginTop: '10px',
+            marginTop: '20px',
             fontWeight: 500,
             textAlign: 'center',
           }}

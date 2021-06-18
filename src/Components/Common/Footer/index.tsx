@@ -1,13 +1,14 @@
 import React from 'react';
 import { AppContainer } from '@/core/Components/Containers';
-import {
-  FacebookFilled,
-  TwitterSquareFilled,
-  LinkedinFilled,
-  PhoneOutlined,
-  MailOutlined,
-} from '@ant-design/icons';
 import Typography from 'antd/lib/typography';
+import {
+  FiFacebook,
+  FiTwitter,
+  FiLinkedin,
+  FiInstagram,
+  FiMail,
+  FiPhoneCall,
+} from 'react-icons/fi';
 
 import * as styles from './styles';
 
@@ -30,7 +31,7 @@ class Hero extends React.Component<Props> {
             <styles.Container>
               <Title level={5} style={{ color: '#fff', marginBottom: '1.2em' }}>
                 {' '}
-                ABOUT
+                About
               </Title>
               <Title
                 level={5}
@@ -74,17 +75,29 @@ class Hero extends React.Component<Props> {
                   color: '#fff',
                   fontWeight: 'normal',
                   fontSize: '14px',
-                  marginTop: '1em',
+                  marginTop: '0.2em',
                 }}
               >
                 {' '}
-                jobbox.ai © {dt.getFullYear()}. <br /> All rights reserved.
+                Privacy Policy
+              </Title>
+              <Title
+                level={5}
+                style={{
+                  color: '#fff',
+                  fontWeight: 'normal',
+                  fontSize: '14px',
+                  marginTop: '0.2em',
+                }}
+              >
+                {' '}
+                Terms of Use
               </Title>
             </styles.Container>
             <styles.Container>
               <Title level={5} style={{ color: '#fff', marginBottom: '1.2em' }}>
                 {' '}
-                GET INVOLVED
+                Get Involved
               </Title>
               <Title
                 level={5}
@@ -126,7 +139,7 @@ class Hero extends React.Component<Props> {
             <styles.Container>
               <Title level={5} style={{ color: '#fff', marginBottom: '1.2em' }}>
                 {' '}
-                STAY CONNECTED
+                Stay Connected
               </Title>
               <Title
                 level={5}
@@ -137,10 +150,10 @@ class Hero extends React.Component<Props> {
                   marginTop: '0.2em',
                 }}
               >
-                <FacebookFilled
+                <FiFacebook
                   style={{
-                    marginRight: '5px',
-                    fontSize: '22px',
+                    marginRight: '10px',
+                    fontSize: '20px',
                     color: '#fff',
                     verticalAlign: 'top',
                   }}
@@ -156,10 +169,10 @@ class Hero extends React.Component<Props> {
                   marginTop: '0.2em',
                 }}
               >
-                <TwitterSquareFilled
+                <FiTwitter
                   style={{
-                    marginRight: '5px',
-                    fontSize: '22px',
+                    marginRight: '10px',
+                    fontSize: '20px',
                     color: '#fff',
                     verticalAlign: 'top',
                   }}
@@ -175,21 +188,15 @@ class Hero extends React.Component<Props> {
                   marginTop: '0.2em',
                 }}
               >
-                <LinkedinFilled
+                <FiLinkedin
                   style={{
-                    marginRight: '5px',
-                    fontSize: '22px',
+                    marginRight: '10px',
+                    fontSize: '20px',
                     color: '#fff',
                     verticalAlign: 'top',
                   }}
                 />
                 Linkedin
-              </Title>
-            </styles.Container>
-            <styles.Container>
-              <Title level={5} style={{ color: '#fff', marginBottom: '1.2em' }}>
-                {' '}
-                SALES ENQUIRIES
               </Title>
               <Title
                 level={5}
@@ -200,9 +207,34 @@ class Hero extends React.Component<Props> {
                   marginTop: '0.2em',
                 }}
               >
-                <PhoneOutlined
+                <FiInstagram
                   style={{
-                    marginRight: '5px',
+                    marginRight: '10px',
+                    fontSize: '20px',
+                    color: '#fff',
+                    verticalAlign: 'top',
+                  }}
+                />
+                Instagram
+              </Title>
+            </styles.Container>
+            <styles.Container>
+              <Title level={5} style={{ color: '#fff', marginBottom: '1.2em' }}>
+                {' '}
+                Sales Enquiries
+              </Title>
+              <Title
+                level={5}
+                style={{
+                  color: '#fff',
+                  fontWeight: 'normal',
+                  fontSize: '14px',
+                  marginTop: '0.2em',
+                }}
+              >
+                <FiPhoneCall
+                  style={{
+                    marginRight: '10px',
                     fontSize: '20px',
                     color: '#fff',
                     verticalAlign: 'top',
@@ -219,15 +251,27 @@ class Hero extends React.Component<Props> {
                   marginTop: '0.2em',
                 }}
               >
-                <MailOutlined
+                <FiMail
                   style={{
-                    marginRight: '5px',
+                    marginRight: '10px',
                     fontSize: '20px',
                     color: '#fff',
                     verticalAlign: 'top',
                   }}
                 />
                 yourfriends@jobbox.ai
+              </Title>
+              <Title
+                level={5}
+                style={{
+                  color: '#fff',
+                  fontWeight: 'normal',
+                  fontSize: '14px',
+                  marginTop: '2em',
+                }}
+              >
+                {' '}
+                jobbox.ai © {dt.getFullYear()}. <br /> All rights reserved.
               </Title>
             </styles.Container>
           </styles.Root>
