@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Header from '@/Components/Common/Header';
-import Authenticate from '@/Containers/Authenticate';
+import Authenticate from '@/Containers/StartSession';
 import Footer from '@/Components/Common/Footer';
 
 const Load: React.FC<{}> = () => (

@@ -1,4 +1,4 @@
-import styled from '@/Containers/Loader/Form/node_modules/styled-components';
+import styled from 'styled-components';
 
 export const Root = styled.div`
   max-width: 450px;
