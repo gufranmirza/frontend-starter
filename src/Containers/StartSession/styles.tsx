@@ -18,7 +18,3 @@ export const Info = styled.div`
   background: ${vars.Grey4};
   padding: ${vars.ApplicationPadding};
 `;
-
-export const Ripple = styled.div`
-  color: ${vars.Blue6};
-  `;

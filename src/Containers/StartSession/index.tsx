@@ -5,8 +5,6 @@ import * as vars from '@/core/Theme/vars';
 
 import * as styles from './styles';
 
-const css = styles.Ripple;
-
 const { Title } = Typography;
 
 class Authenticate extends React.Component {
@@ -20,7 +18,7 @@ class Authenticate extends React.Component {
       <div>
         <styles.Root>
           <styles.Container>
-            <Ripple css/>
+            <Ripple color={vars.Blue6} />
           </styles.Container>
         </styles.Root>
         <styles.Info>
