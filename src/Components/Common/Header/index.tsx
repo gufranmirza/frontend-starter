@@ -6,7 +6,7 @@ import Dropdown from 'antd/lib/dropdown';
 import { MenuFoldOutlined } from '@ant-design/icons';
 import Divider from 'antd/lib/divider';
 
-import { AppContainer } from '@/core/Components/Containers';
+import { AppContainer } from '@/core/Components/AppContainer';
 import ShortcutIcon from '@atlaskit/icon/glyph/shortcut';
 import * as styles from './styles';
 

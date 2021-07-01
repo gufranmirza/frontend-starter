@@ -46,6 +46,7 @@
     "antd": "^4.6.3",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.0",
+    "cookie": "^0.4.1",
     "express": "^4.17.1",
     "less": "^3.12.2",
     "next": "^9.4.2",

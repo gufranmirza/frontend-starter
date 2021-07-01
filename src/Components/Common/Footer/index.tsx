@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppContainer } from '@/core/Components/Containers';
+import { AppContainer } from '@/core/Components/AppContainer';
 import Typography from 'antd/lib/typography';
 import {
   FiFacebook,

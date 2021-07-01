@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import Title from '@/Components/Title';
 import Header from '@/Components/Common/Header';
+import withAuth from '@/core/Components/HOCS/withAuth';
 
 const Home: React.FC<{}> = () => (
   <div className="container">
@@ -18,4 +18,4 @@ const Home: React.FC<{}> = () => (
   </div>
 );
 
-export default Home;
+export default withAuth(Home);

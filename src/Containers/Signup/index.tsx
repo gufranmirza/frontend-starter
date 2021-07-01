@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppContainer } from '@/core/Components/Containers';
+import { AppContainer } from '@/core/Components/AppContainer';
 import HeroWithImage from '@/Components/Common/HeroWithImage';
 import * as vars from '@/core/Theme/vars';
 import Footer from '@/Components/Common/Footer';
