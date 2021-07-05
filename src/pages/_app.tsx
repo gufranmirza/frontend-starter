@@ -45,9 +45,6 @@ MyApp.getInitialProps = async (
 
   // Call the page's `getInitialProps` and fill `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
-
-  console.log(appProps, authenticated);
-
   return { ...appProps, authenticated };
 };
 
