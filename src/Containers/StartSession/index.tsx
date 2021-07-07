@@ -14,9 +14,7 @@ import * as styles from './styles';
 
 const { Title } = Typography;
 
-type State = {
-  loading: boolean;
-};
+type State = {};
 
 type Props = {
   token: string;
@@ -36,13 +34,6 @@ const errorNotification = (): void => {
 };
 
 class Authenticate extends React.Component<Props, State> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-    };
-  }
-
   componentDidMount(): void {
     const { token, router, authenticate } = this.props;
     axios
@@ -73,36 +64,32 @@ class Authenticate extends React.Component<Props, State> {
   }
 
   render(): any {
-    const { loading } = this.state;
     return (
       <div>
         <styles.Root>
-          {loading && (
-            <styles.Container>
-              <Ripple color={vars.Blue6} /> <br />
-              <Typography.Paragraph>
-                {' '}
-                We are securely logging you in, please wait ...
-              </Typography.Paragraph>
-            </styles.Container>
-          )}
+          <styles.Container>
+            <Ripple color={vars.Blue6} /> <br />
+            <Typography.Paragraph>
+              {' '}
+              We are securely logging you in, please wait ...
+            </Typography.Paragraph>
+          </styles.Container>
         </styles.Root>
         <styles.Info>
           <Title
-            level={4}
+            level={5}
             style={{
               fontWeight: 'normal',
               color: vars.HeadingColor1,
               margin: 0,
-              fontSize: '18px',
               textAlign: 'center',
               paddingTop: '25px',
               paddingBottom: '25px',
             }}
           >
             <AppContainer>
-              After submitting login details, we&apos;ll send you an email link
-              to login .
+              You will be redirected to the requested webpage after
+              authentication is completed
             </AppContainer>
           </Title>
         </styles.Info>

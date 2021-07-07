@@ -3,7 +3,7 @@ import * as vars from '@/core/Theme/vars';
 
 export const Root = styled.div`
   padding: ${vars.ApplicationPadding};
-  padding-top: 100px;
+  padding-top: 70px;
   height: calc(100vh - 70px);
 `;
 
