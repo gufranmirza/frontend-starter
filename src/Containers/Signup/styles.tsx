@@ -3,7 +3,11 @@ import * as vars from '@/core/Theme/vars';
 
 export const Root = styled.div`
   padding: ${vars.ApplicationPadding};
-  padding-top: 100px;
+  padding-top: 70px;
+  height: calc(100vh - 70px);
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 export const Container = styled.div`
@@ -13,8 +17,13 @@ export const Container = styled.div`
 
 export const Column = styled.div`
   flex: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 200px);
   @media screen and (max-width: 768px) {
     flex: 100%;
+    height: auto;
   }
 `;
 
@@ -26,4 +35,9 @@ export const ColumnLeft = styled(Column)`
   @media screen and (max-width: 768px) {
     display: none;
   }
+`;
+
+export const Info = styled.div`
+  background: ${vars.Grey4};
+  padding: ${vars.ApplicationPadding};
 `;

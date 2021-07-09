@@ -1,31 +1,121 @@
 import React, { Component } from 'react';
 import Typography from 'antd/lib/typography';
 import Link from 'next/link';
+import axios from 'axios';
+import { Config } from '@/core/config';
+import message from 'antd/lib/message';
 
 import Button from '@atlaskit/button';
-import Form, {
-  ErrorMessage,
-  Field,
-  FormFooter,
-  ValidMessage,
-} from '@atlaskit/form';
+import Form, { ErrorMessage, Field, FormFooter } from '@atlaskit/form';
+import { ValidateEmail } from '@/core/validations/email';
 
 import Textfield from '@atlaskit/textfield';
 import * as styles from './styles';
 
 const { Title } = Typography;
 
-function validate(value: unknown): string {
-  if (value !== 'open sesame') {
-    return 'INCORRECT_PHRASE';
-  }
-  return undefined;
-}
+type Props = {};
+
+type State = {
+  name: string;
+  email: string;
+  company: string;
+  designation: string;
+};
+
+const errorNotification = (m: string): void => {
+  message.error({
+    duration: 6,
+    content: m,
+    style: {
+      marginTop: '80px',
+    },
+  });
+};
+
+const successNotification = (m): void => {
+  message.success({
+    duration: 6,
+    content: m,
+    style: {
+      marginTop: '80px',
+    },
+  });
+};
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default class extends Component<{}> {
+export default class extends Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      company: '',
+      designation: '',
+      name: '',
+    };
+  }
+
   handleSubmit = (): void => {
-    // you can now do stuff with the form.
+    const { name, email, designation, company } = this.state;
+
+    axios
+      .post(`${Config().ServiceURI}/signup`, {
+        Email: email,
+        FirstName: name,
+        CompanyName: company,
+        Designation: designation,
+      })
+      .then(res => {
+        const { status, data } = res;
+        if (data !== undefined && status === 200) {
+          successNotification(
+            `Your account has been created successfully and an confirmation link has been sent on email ${email}. Please click on the link to proceed. `,
+          );
+          this.setState({ email: '' });
+        } else {
+          errorNotification(data.Error);
+        }
+      })
+      .catch(error => {
+        const { response } = error;
+        if (response !== undefined && response.data !== undefined) {
+          errorNotification(response.data.Error);
+        } else {
+          errorNotification('Something went wrong, please try again');
+        }
+      });
+  };
+
+  validateCompany = (value: string): string => {
+    if (value === '') {
+      return 'INCORRECT';
+    }
+    this.setState({ company: value });
+    return undefined;
+  };
+
+  validateName = (value: string): string => {
+    if (value === '') {
+      return 'INCORRECT';
+    }
+    this.setState({ name: value });
+    return undefined;
+  };
+
+  validateEmail = (value: string): string => {
+    if (!ValidateEmail(value)) {
+      return 'INCORRECT';
+    }
+    this.setState({ email: value });
+    return undefined;
+  };
+
+  validateDesignation = (value: string): string => {
+    if (value === '') {
+      return 'INCORRECT';
+    }
+    this.setState({ designation: value });
+    return undefined;
   };
 
   render(): any {
@@ -38,16 +128,15 @@ export default class extends Component<{}> {
                 label="Company Name"
                 isRequired
                 name="company-name"
-                validate={validate}
+                validate={this.validateCompany}
                 defaultValue=""
               >
-                {({ fieldProps, error, meta: { valid } }: any) => (
+                {({ fieldProps, error }: any) => (
                   <>
                     <Textfield {...fieldProps} />
-                    {valid && <ValidMessage>Your wish granted</ValidMessage>}
-                    {error === 'INCORRECT_PHRASE' && (
+                    {error === 'INCORRECT' && (
                       <ErrorMessage>
-                        Incorrect, try &lsquo;open sesame&rsquo;
+                        Please select a company you work for
                       </ErrorMessage>
                     )}
                   </>
@@ -57,17 +146,14 @@ export default class extends Component<{}> {
                 label="Work Email"
                 isRequired
                 name="work-email"
-                validate={validate}
+                validate={this.validateEmail}
                 defaultValue=""
               >
-                {({ fieldProps, error, meta: { valid } }: any) => (
+                {({ fieldProps, error }: any) => (
                   <>
                     <Textfield {...fieldProps} />
-                    {valid && <ValidMessage>Your wish granted</ValidMessage>}
-                    {error === 'INCORRECT_PHRASE' && (
-                      <ErrorMessage>
-                        Incorrect, try &lsquo;open sesame&rsquo;
-                      </ErrorMessage>
+                    {error === 'INCORRECT' && (
+                      <ErrorMessage>Incorrect email address</ErrorMessage>
                     )}
                   </>
                 )}
@@ -76,17 +162,14 @@ export default class extends Component<{}> {
                 label="Your Name"
                 isRequired
                 name="your-name"
-                validate={validate}
+                validate={this.validateName}
                 defaultValue=""
               >
-                {({ fieldProps, error, meta: { valid } }: any) => (
+                {({ fieldProps, error }: any) => (
                   <>
                     <Textfield {...fieldProps} />
-                    {valid && <ValidMessage>Your wish granted</ValidMessage>}
-                    {error === 'INCORRECT_PHRASE' && (
-                      <ErrorMessage>
-                        Incorrect, try &lsquo;open sesame&rsquo;
-                      </ErrorMessage>
+                    {error === 'INCORRECT' && (
+                      <ErrorMessage>Name can not be blank</ErrorMessage>
                     )}
                   </>
                 )}
@@ -94,18 +177,15 @@ export default class extends Component<{}> {
               <Field
                 label="Designation"
                 isRequired
-                name="your-name"
-                validate={validate}
+                name="your-designation"
+                validate={this.validateDesignation}
                 defaultValue=""
               >
-                {({ fieldProps, error, meta: { valid } }: any) => (
+                {({ fieldProps, error }: any) => (
                   <>
                     <Textfield {...fieldProps} />
-                    {valid && <ValidMessage>Your wish granted</ValidMessage>}
-                    {error === 'INCORRECT_PHRASE' && (
-                      <ErrorMessage>
-                        Incorrect, try &lsquo;open sesame&rsquo;
-                      </ErrorMessage>
+                    {error === 'INCORRECT' && (
+                      <ErrorMessage>Designation can not be blank</ErrorMessage>
                     )}
                   </>
                 )}

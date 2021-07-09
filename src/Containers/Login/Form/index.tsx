@@ -63,7 +63,7 @@ export default class extends Component<Props, State> {
     }
 
     axios
-      .post(`${Config().ServiceURI}login`, {
+      .post(`${Config().ServiceURI}/login`, {
         Email: email,
       })
       .then(res => {
@@ -88,8 +88,15 @@ export default class extends Component<Props, State> {
   };
 
   onChange = (e: { target: HTMLInputElement }): void => {
+    const { value } = e.target;
+    if (!ValidateEmail(value)) {
+      this.setState({ valid: false });
+    } else {
+      this.setState({ valid: true });
+    }
+
     this.setState({
-      email: e.target.value,
+      email: value,
     });
   };
 

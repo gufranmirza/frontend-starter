@@ -37,7 +37,7 @@ class Authenticate extends React.Component<Props, State> {
   componentDidMount(): void {
     const { token, router, authenticate } = this.props;
     axios
-      .post(`${Config().ServiceURI}authenticate`, {
+      .post(`${Config().ServiceURI}/authenticate`, {
         Token: token,
       })
       .then(res => {
