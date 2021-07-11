@@ -47,8 +47,6 @@
     "axios": "^0.20.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.0",
-    "cookie": "^0.4.1",
-    "cookie-cutter": "^0.2.0",
     "express": "^4.17.1",
     "less": "^3.12.2",
     "next": "^9.4.2",
@@ -57,6 +55,7 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "styled-components": "^5.2.0",
+    "universal-cookie": "^4.0.4",
     "webpack-bundle-size-analyzer": "^3.1.0"
   },
   "devDependencies": {

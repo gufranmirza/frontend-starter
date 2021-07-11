@@ -6,7 +6,7 @@ import { Ripple } from 'react-awesome-spinners';
 import { AppContainer } from '@/core/Components/AppContainer';
 import { NextRouter } from 'next/router';
 import { Config } from '@/core/config';
-import cookie from 'cookie-cutter';
+import Cookies from 'universal-cookie';
 import message from 'antd/lib/message';
 
 import axios from 'axios';
@@ -36,6 +36,8 @@ const errorNotification = (): void => {
 class Authenticate extends React.Component<Props, State> {
   componentDidMount(): void {
     const { token, router, authenticate } = this.props;
+    const cookies = new Cookies();
+
     axios
       .post(`${Config().ServiceURI}/authenticate`, {
         Token: token,
@@ -43,7 +45,7 @@ class Authenticate extends React.Component<Props, State> {
       .then(res => {
         const { status, data } = res;
         if (data !== undefined && status === 200) {
-          cookie.set('session', data.AccessToken);
+          cookies.set('session', data.AccessToken, { path: '/' });
           authenticate(true);
           router.push('/');
         } else {

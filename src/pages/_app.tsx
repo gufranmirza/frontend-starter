@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react';
 import App, { AppInitialProps } from 'next/app';
-import cookie from 'cookie';
+import Cookies from 'universal-cookie';
 import '@/core/Theme/antd.less';
 import '@/core/Theme/base';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import axios from 'axios';
+import { Config } from '@/core/config';
 
 import { CookieMessage } from '@/core/types/index.d';
 import { AuthProvider } from '@/core/Components/Providers/AuthProvider';
@@ -37,11 +39,37 @@ MyApp.getInitialProps = async (
   let authenticated = false;
   const request = appContext.ctx.req as CookieMessage;
   if (request) {
-    request.cookies = cookie.parse(request.headers.cookie || '');
-    authenticated = !!request.cookies.session;
-  }
+    const cookies = new Cookies(request.headers.cookie || '');
+    request.cookies = cookies.getAll() || {};
 
-  // TODO  Do the Cookie Validation here via API call
+    // Make API Call to validate Token
+    await axios
+      .post(
+        `${Config().ServiceURI}/validate`,
+        {
+          Token: request.cookies.session,
+        },
+        {
+          headers: {
+            Authorization: `BEARER ${request.cookies.session}`,
+          },
+        },
+      )
+      .then(res => {
+        const { status } = res;
+        if (status === 200) {
+          authenticated = true;
+        }
+      })
+      .catch(err => {
+        const { response } = err;
+        authenticated = false;
+        if (response !== undefined && response.status === 401) {
+          cookies.remove('session', { path: '/' });
+          request.cookies.session = undefined;
+        }
+      });
+  }
 
   // Call the page's `getInitialProps` and fill `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
