@@ -5,7 +5,7 @@ import '@/core/Theme/antd.less';
 import '@/core/Theme/base';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import axios from 'axios';
-import { Config } from '@/core/config';
+import config from '@/core/config';
 
 import { CookieMessage } from '@/core/types/index.d';
 import { AuthProvider } from '@/core/Components/Providers/AuthProvider';
@@ -45,7 +45,7 @@ MyApp.getInitialProps = async (
     // Make API Call to validate Token
     await axios
       .post(
-        `${Config().ServiceURI}/validate`,
+        `${config('ServiceURI')}/validate`,
         {
           Token: request.cookies.session,
         },

@@ -5,6 +5,7 @@ import Authenticate from '@/Containers/StartSession';
 import Footer from '@/Components/Common/Footer';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/core/Components/Providers/AuthProvider';
+import withoutAuth from '@/core/Components/HOCS/withoutAuth';
 
 const Load: React.FC<{}> = () => {
   const router = useRouter();
@@ -26,4 +27,4 @@ const Load: React.FC<{}> = () => {
   );
 };
 
-export default Load;
+export default withoutAuth(Load);

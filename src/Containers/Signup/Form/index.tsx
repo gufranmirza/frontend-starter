@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from 'antd/lib/typography';
 import Link from 'next/link';
 import axios from 'axios';
-import { Config } from '@/core/config';
+import Config from '@/core/config';
 import message from 'antd/lib/message';
 
 import Button from '@atlaskit/button';
@@ -59,7 +59,7 @@ export default class extends Component<Props, State> {
     const { name, email, designation, company } = this.state;
 
     axios
-      .post(`${Config().ServiceURI}/signup`, {
+      .post(`${Config('ServiceURI')}/signup`, {
         Email: email,
         FirstName: name,
         CompanyName: company,

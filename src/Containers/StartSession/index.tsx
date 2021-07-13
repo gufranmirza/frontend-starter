@@ -5,7 +5,7 @@ import Typography from 'antd/lib/typography';
 import { Ripple } from 'react-awesome-spinners';
 import { AppContainer } from '@/core/Components/AppContainer';
 import { NextRouter } from 'next/router';
-import { Config } from '@/core/config';
+import Config from '@/core/config';
 import Cookies from 'universal-cookie';
 import message from 'antd/lib/message';
 
@@ -39,7 +39,7 @@ class Authenticate extends React.Component<Props, State> {
     const cookies = new Cookies();
 
     axios
-      .post(`${Config().ServiceURI}/authenticate`, {
+      .post(`${Config('ServiceURI')}/authenticate`, {
         Token: token,
       })
       .then(res => {

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { ValidateEmail } from '@/core/validations/email';
 import axios from 'axios';
-import { Config } from '@/core/config';
+import config from '@/core/config';
 import message from 'antd/lib/message';
 
 import Button from '@atlaskit/button';
@@ -63,7 +63,7 @@ export default class extends Component<Props, State> {
     }
 
     axios
-      .post(`${Config().ServiceURI}/login`, {
+      .post(`${config('ServiceURI')}/login`, {
         Email: email,
       })
       .then(res => {
