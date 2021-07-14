@@ -9,7 +9,7 @@ import {
   FiMail,
   FiPhoneCall,
 } from 'react-icons/fi';
-
+import config from '@/core/config';
 import * as styles from './styles';
 
 const { Title } = Typography;
@@ -43,7 +43,7 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                Home
+                <a href={`${config('URLs.MainPortal')}`}>Home </a>
               </Title>
               <Title
                 level={5}
@@ -55,7 +55,7 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                About Us
+                <a href={`${config('URLs.MainPortal')}/about`}>About </a>{' '}
               </Title>
               <Title
                 level={5}
@@ -67,7 +67,7 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                Contact
+                <a href={`${config('URLs.MainPortal')}/contact`}>Contact </a>
               </Title>
               <Title
                 level={5}
@@ -79,7 +79,10 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                Privacy Policy
+                <a href={`${config('URLs.MainPortal')}/privacy`}>
+                  {' '}
+                  Privacy Policy
+                </a>
               </Title>
               <Title
                 level={5}
@@ -91,7 +94,7 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                Terms of Use
+                <a href={`${config('URLs.MainPortal')}/terms`}> Terms of Use</a>
               </Title>
             </styles.Container>
             <styles.Container>
@@ -109,7 +112,7 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                For Job Seekers
+                <a href={`${config('URLs.MainPortal')}/`}> For Job Seekers</a>
               </Title>{' '}
               <Title
                 level={5}
@@ -121,7 +124,10 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                Employers Login
+                <a href={`${config('URLs.RecruiterPortal')}/login`}>
+                  {' '}
+                  Employers Login
+                </a>
               </Title>
               <Title
                 level={5}
@@ -133,7 +139,10 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                Employers Sign up
+                <a href={`${config('URLs.RecruiterPortal')}/signup`}>
+                  {' '}
+                  Employers Sign up{' '}
+                </a>
               </Title>
             </styles.Container>
             <styles.Container>
@@ -240,7 +249,7 @@ class Hero extends React.Component<Props> {
                     verticalAlign: 'top',
                   }}
                 />
-                +91-1234567890
+                {config('Social.Mobile')}
               </Title>
               <Title
                 level={5}
@@ -259,7 +268,7 @@ class Hero extends React.Component<Props> {
                     verticalAlign: 'top',
                   }}
                 />
-                yourfriends@jobbox.ai
+                {config('Social.Email')}
               </Title>
               <Title
                 level={5}
@@ -271,7 +280,8 @@ class Hero extends React.Component<Props> {
                 }}
               >
                 {' '}
-                jobbox.ai © {dt.getFullYear()}. <br /> All rights reserved.
+                {config('Product.Name')} © {dt.getFullYear()}. <br /> All rights
+                reserved.
               </Title>
             </styles.Container>
           </styles.Root>

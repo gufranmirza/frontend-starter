@@ -22,4 +22,14 @@ export const Container = styled.div`
   @media screen and (max-width: 768px) {
     margin-bottom: 30px;
   }
+
+  a {
+    text-decoration: none;
+    color: ${vars.Grey1};
+
+    &:hover {
+      text-decoration: underline;
+      color: ${vars.Grey1};
+    }
+  }
 `;

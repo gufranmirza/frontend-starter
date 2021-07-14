@@ -47,4 +47,11 @@ const MenuButton = styled.div`
   justify-content: center;
 `;
 
+export const Image = styled.div`
+  max-width: 118px;
+  img {
+    max-width: 118px;
+  }
+`;
+
 export { Root, Container, ButtonsLeft, MenuLeft, MenuButton };

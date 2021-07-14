@@ -8,6 +8,7 @@ import Divider from 'antd/lib/divider';
 
 import { AppContainer } from '@/core/Components/AppContainer';
 import ShortcutIcon from '@atlaskit/icon/glyph/shortcut';
+import config from '@/core/config';
 import * as styles from './styles';
 
 const menu = (
@@ -68,7 +69,11 @@ const Title: React.FC<{}> = () => (
   <styles.Root>
     <AppContainer>
       <styles.Container>
-        <div> JOBX - TBD </div>
+        <div>
+          <styles.Image>
+            <img alt="" src="/logo.png" />
+          </styles.Image>
+        </div>
         <div>
           <styles.ButtonsLeft>
             <Link href="/signup">
@@ -76,6 +81,7 @@ const Title: React.FC<{}> = () => (
                 <Button
                   appearance="subtle"
                   iconAfter={<ShortcutIcon label="" size="small" />}
+                  href={config('URLs.MainPortal')}
                 >
                   {' '}
                   For Job Seekers{' '}
