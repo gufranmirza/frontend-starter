@@ -21,4 +21,4 @@ const values = {
   },
 };
 
-exports.default = values;
+export default values;

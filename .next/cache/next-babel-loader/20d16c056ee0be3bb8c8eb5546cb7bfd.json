@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';\nexport const Root = styled.div.withConfig({\n  displayName: \"styles__Root\",\n  componentId: \"sc-1hq02gq-0\"\n})([\"\"]);","map":null,"metadata":{},"sourceType":"module"}

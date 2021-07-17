@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport * as styles from \"./styles\";\n\nvar Left = function Left() {\n  return __jsx(styles.Image, null, __jsx(\"img\", {\n    alt: \"\",\n    src: \"/illustrations/profile_data.svg\"\n  }));\n};\n\nexport default Left;","map":null,"metadata":{},"sourceType":"module"}

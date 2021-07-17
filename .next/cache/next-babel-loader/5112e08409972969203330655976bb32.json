@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';\nimport * as vars from \"../../Theme/vars\";\nconst AppContainer = styled.div.withConfig({\n  displayName: \"AppContainer\",\n  componentId: \"n8eaz4-0\"\n})([\"max-width:\", \";margin:0 auto;\"], vars.ApplicationWidth);\nexport { AppContainer };","map":null,"metadata":{},"sourceType":"module"}

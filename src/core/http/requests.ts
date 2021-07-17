@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Response } from '@/core/types/index.d';
-import { Config } from '@/core/config';
+import config from '@/core/config';
 
 function Post(url: string, body: object): Response {
   axios
-    .post(`${Config().ServiceURI}${url}`, body)
+    .post(`${config('ServiceURI')}${url}`, body)
     .then(res => {
       console.log(res);
       return {
@@ -22,7 +22,7 @@ function Post(url: string, body: object): Response {
 
 function Get(url: string): Response {
   axios
-    .get(`${Config().ServiceURI}${url}`)
+    .get(`${config('ServiceURI')}${url}`)
     .then(res => ({
       data: res.data,
       status: res.status,

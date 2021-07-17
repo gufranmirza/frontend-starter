@@ -1,0 +1,1 @@
+{"version":1,"pages404":true,"basePath":"","redirects":[],"rewrites":[],"headers":[],"dynamicRoutes":[{"page":"/start-session/[token]","regex":"^\\/start\\-session\\/([^/]+?)(?:\\/)?$","namedRegex":"^/start\\-session/(?<token>[^/]+?)(?:/)?$","routeKeys":["token"]}]}
