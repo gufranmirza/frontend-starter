@@ -1,1 +1,0 @@
-{"ast":null,"code":"import styled from 'styled-components';\nexport const Image = styled.div.withConfig({\n  displayName: \"styles__Image\",\n  componentId: \"sc-1yxob82-0\"\n})([\"img{max-width:400px;}@media screen and (max-width:768px){img{max-width:100%;margin-top:\", \";margin-bottom:\", \";}}\"], p => p.top, p => p.bottom);","map":null,"metadata":{},"sourceType":"module"}

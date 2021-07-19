@@ -1,1 +1,0 @@
-{"ast":null,"code":"import styled from 'styled-components';\nexport var Root = styled.div.withConfig({\n  displayName: \"styles__Root\",\n  componentId: \"sc-1wqx2xz-0\"\n})([\"max-width:450px;@media screen and (max-width:768px){margin:0 auto;}\"]);","map":null,"metadata":{},"sourceType":"module"}

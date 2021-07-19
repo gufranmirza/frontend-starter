@@ -1,1 +1,0 @@
-{"ast":null,"code":"import styled from 'styled-components';\nexport const Root = styled.div.withConfig({\n  displayName: \"styles__Root\",\n  componentId: \"gf39b8-0\"\n})([\"max-width:450px;margin:0;padding-top:10px;\"]);","map":null,"metadata":{},"sourceType":"module"}

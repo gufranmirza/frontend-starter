@@ -1,1 +1,0 @@
-{"ast":null,"code":"function Config() {\n  return {\n    ServiceURI: 'http://localhost:8001/recruiter-api/v1'\n  };\n}\n\nexport { Config };","map":null,"metadata":{},"sourceType":"module"}

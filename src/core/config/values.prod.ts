@@ -6,7 +6,7 @@
  */
 
 const values = {
-  ServiceURI: 'http://localhost:8001/recruiter-api/v1',
+  ServiceURI: 'https://api.jobbox.ai/recruiter-api/v1',
   Social: {
     Mobile: '+91-96637-99660',
     Email: 'yourfriends@jobbox.ai',
