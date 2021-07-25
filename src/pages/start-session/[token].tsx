@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '@/Components/Common/Header';
-import Authenticate from '@/Containers/StartSession';
-import Footer from '@/Components/Common/Footer';
+import Header from '@/components/common/Header';
+import Authenticate from '@/containers/StartSession';
+import Footer from '@/components/common/Footer';
 import { useRouter } from 'next/router';
-import { useAuth } from '@/core/Components/Providers/AuthProvider';
-import withoutAuth from '@/core/Components/HOCS/withoutAuth';
+import { useAuth } from '@/core/components/Providers/AuthProvider';
+import withoutAuth from '@/core/components/HOCS/withoutAuth';
 
 const Load: React.FC<{}> = () => {
   const router = useRouter();

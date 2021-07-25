@@ -1,14 +1,14 @@
 import React, { ReactElement } from 'react';
 import App, { AppInitialProps } from 'next/app';
 import Cookies from 'universal-cookie';
-import '@/core/Theme/antd.less';
-import '@/core/Theme/base';
+import '@/core/theme/antd.less';
+import '@/core/theme/base';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import axios from 'axios';
 import config from '@/core/config';
 
 import { CookieMessage } from '@/core/types/index.d';
-import { AuthProvider } from '@/core/Components/Providers/AuthProvider';
+import { AuthProvider } from '@/core/components/Providers/AuthProvider';
 
 const GlobalStyle = createGlobalStyle``;
 const theme = {};

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '@/Components/Common/Header';
-import withAuth from '@/core/Components/HOCS/withAuth';
+import Header from '@/components/common/Header';
+import withAuth from '@/core/components/HOCS/withAuth';
 
 const Home: React.FC<{}> = () => (
   <div className="container">
