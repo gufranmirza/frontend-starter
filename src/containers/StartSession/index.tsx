@@ -45,7 +45,7 @@ class Authenticate extends React.Component<Props, State> {
       .then(res => {
         const { status, data } = res;
         if (data !== undefined && status === 200) {
-          cookies.set('session', data.AccessToken, { path: '/' });
+          cookies.set('session', data.accessToken, { path: '/' });
           authenticate(true);
           router.push('/');
         } else {

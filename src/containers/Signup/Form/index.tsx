@@ -73,13 +73,13 @@ export default class extends Component<Props, State> {
           );
           this.setState({ email: '' });
         } else {
-          errorNotification(data.Error);
+          errorNotification(data.error);
         }
       })
       .catch(error => {
         const { response } = error;
         if (response !== undefined && response.data !== undefined) {
-          errorNotification(response.data.Error);
+          errorNotification(response.data.error);
         } else {
           errorNotification('Something went wrong, please try again');
         }
