@@ -3,11 +3,14 @@ import Head from 'next/head';
 import Header from '@/components/common/Header';
 import Signup from '@/containers/Signup';
 import withoutAuth from '@/core/components/HOCS/withoutAuth';
+import config from '@/core/config';
 
 const Home: React.FC<{}> = () => (
   <div className="container">
     <Head>
-      <title>Post Jobs, Hire Best Candidate</title>
+      <title>
+        {config('Product.Name')} - Signup | Post Jobs, Hire Best Candidate
+      </title>
     </Head>
     <Header />
     <Signup />

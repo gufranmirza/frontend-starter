@@ -12,7 +12,7 @@ const values = {
     Email: 'yourfriends@jobbox.ai',
   },
   Product: {
-    Name: 'jobbox.ai ',
+    Name: 'Job Box',
   },
   URLs: {
     RecruiterPortal: 'https://recruiter.jobbox.ai',

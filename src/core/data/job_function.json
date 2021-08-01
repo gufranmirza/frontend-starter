@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "name": "Software Developer"
+    },
+    {
+        "id": "2",
+        "name": "Technical Architect"
+    },
+    {
+        "id": "3",
+        "name": "Project Lead / Manager"
+    },
+    {
+        "id": "4",
+        "name": "Product Manager"
+    },
+    {
+        "id": "5",
+        "name": "QA / Testing"
+    },
+    {
+        "id": "6",
+        "name": "Design / Graphics"
+    },
+    {
+        "id": "7",
+        "name": "Network Administrator"
+    },
+    {
+        "id": "8",
+        "name": "System Administrator"
+    },
+    {
+        "id": "9",
+        "name": "Database Administrator (DBA)"
+    },
+    {
+        "id": "10",
+        "name": "Technical Support"
+    },
+    {
+        "id": "11",
+        "name": "Technical Writer"
+    },
+    {
+        "id": "12",
+        "name": "Business Analyst"
+    },
+    {
+        "id": "13",
+        "name": "Senior Management"
+    },
+    {
+        "id": "14",
+        "name": "Other"
+    }
+]

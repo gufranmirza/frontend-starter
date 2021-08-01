@@ -66,9 +66,13 @@ const Title: React.FC<{}> = () => (
     <AppContainer>
       <styles.Container>
         <div>
-          <styles.Image>
-            <img alt="" src="/logo.png" />
-          </styles.Image>
+          <Link href="/">
+            <a href="/">
+              <styles.Image>
+                <img alt="" src="/logo.png" />
+              </styles.Image>
+            </a>
+          </Link>
         </div>
         <div>
           <styles.ButtonsLeft>

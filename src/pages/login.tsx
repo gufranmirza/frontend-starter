@@ -5,6 +5,7 @@ import Login from '@/containers/Login';
 import withoutAuth from '@/core/components/HOCS/withoutAuth';
 import { useAuth } from '@/core/components/Providers/AuthProvider';
 import { useRouter } from 'next/router';
+import config from '@/core/config';
 
 const Home: React.FC<{}> = () => {
   const { setAuthenticated } = useAuth();
@@ -13,7 +14,9 @@ const Home: React.FC<{}> = () => {
   return (
     <div className="container">
       <Head>
-        <title>Post Jobs, Hire Best Candidate</title>
+        <title>
+          {config('Product.Name')} - Login | Post Jobs, Hire Best Candidate
+        </title>
       </Head>
       <Header />
       <Login authenticate={setAuthenticated} router={router} />

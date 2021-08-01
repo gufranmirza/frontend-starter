@@ -1,0 +1,54 @@
+[
+    {
+        "id": "1",
+        "name": "Backend Developer"
+    },
+    {
+        "id": "2",
+        "name": "Frontend Developer"
+    },
+    {
+        "id": "3",
+        "name": "DevOps"
+    },
+    {
+        "id": "4",
+        "name": "Mobile Applications"
+    },
+    {
+        "id": "5",
+        "name": "Analytics & Data Science"
+    },
+    {
+        "id": "6",
+        "name": "UI & Design"
+    },
+    {
+        "id": "7",
+        "name": "Quality Assurance"
+    },
+    {
+        "id": "8",
+        "name": "Product Management Jobs"
+    },
+    {
+        "id": "9",
+        "name": "Enterprise - SAP/Oracle Jobs"
+    },
+    {
+        "id": "10",
+        "name": "Semiconductor/VLSI/EDA"
+    },
+    {
+        "id": "11",
+        "name": "Business Analysis and Project Management"
+    },
+    {
+        "id": "12",
+        "name": "Emerging Technologies & Roles"
+    },
+    {
+        "id": "13",
+        "name": "Other Jobs"
+    }
+]
