@@ -35,31 +35,27 @@ const menu = (
           </a>
         </Link>
         <Link href="/login">
-          <a href="/login">
-            <Button
-              style={{ width: '200px' }}
-              shouldFitContainer
-              appearance="subtle"
-            >
-              {' '}
-              Employers Login{' '}
-            </Button>
-          </a>
+          <Button
+            href="/login"
+            style={{ width: '200px' }}
+            shouldFitContainer
+            appearance="subtle"
+          >
+            {' '}
+            Employers Login{' '}
+          </Button>
         </Link>
         <Divider />
-        <Link href="/signup">
-          <a href="/signup">
-            <Button
-              appearance="subtle"
-              shouldFitContainer
-              style={{ width: '200px', margin: '0 0 10px 0' }}
-              iconAfter={<ShortcutIcon label="" size="small" />}
-            >
-              {' '}
-              For Job Seekers{' '}
-            </Button>
-          </a>
-        </Link>
+        <Button
+          href={config('URLs.MainPortal')}
+          appearance="subtle"
+          shouldFitContainer
+          style={{ width: '200px', margin: '0 0 10px 0' }}
+          iconAfter={<ShortcutIcon label="" size="small" />}
+        >
+          {' '}
+          For Job Seekers{' '}
+        </Button>
       </div>
     </Menu.Item>
   </Menu>
@@ -76,33 +72,29 @@ const Title: React.FC<{}> = () => (
         </div>
         <div>
           <styles.ButtonsLeft>
+            <Button
+              appearance="subtle"
+              iconAfter={<ShortcutIcon label="" size="small" />}
+              href={config('URLs.MainPortal')}
+            >
+              {' '}
+              For Job Seekers{' '}
+            </Button>
             <Link href="/signup">
-              <a href="/signup">
-                <Button
-                  appearance="subtle"
-                  iconAfter={<ShortcutIcon label="" size="small" />}
-                  href={config('URLs.MainPortal')}
-                >
-                  {' '}
-                  For Job Seekers{' '}
-                </Button>
-              </a>
-            </Link>
-            <Link href="/signup">
-              <a href="/signup">
-                <Button
-                  style={{ margin: '0 10px 0 35px' }}
-                  appearance="primary"
-                >
-                  {' '}
-                  Employers Sign up
-                </Button>
-              </a>
+              <Button
+                href="/signup"
+                style={{ margin: '0 10px 0 35px' }}
+                appearance="primary"
+              >
+                {' '}
+                Employers Sign up
+              </Button>
             </Link>
             <Link href="/login">
-              <a href="/login">
-                <Button appearance="subtle"> Employers Login </Button>
-              </a>
+              <Button href="/login" appearance="subtle">
+                {' '}
+                Employers Login{' '}
+              </Button>
             </Link>
           </styles.ButtonsLeft>
           <styles.MenuLeft>
