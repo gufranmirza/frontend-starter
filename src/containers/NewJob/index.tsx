@@ -3,6 +3,7 @@ import { AppContainer } from '@/core/components/AppContainer';
 import Footer from '@/components/common/Footer';
 import * as vars from '@/core/theme/vars';
 import Typography from 'antd/lib/typography';
+import Affix from 'antd/lib/affix';
 import Form from './Form';
 
 import * as styles from './styles';
@@ -24,35 +25,38 @@ class Signup extends React.Component {
                 <Form />
               </styles.Left>
               <styles.Right>
-                <styles.Info>
-                  <Title level={5} style={{ color: vars.HeadingColor2 }}>
-                    Few Guidelines
-                  </Title>
-                  <ul>
-                    <li>
-                      <Paragraph>
-                        Proper formatting of the text/content of the posting
-                        with clear spaces and standard bullets (-) to be used.
-                      </Paragraph>
-                    </li>
-                    <li>
-                      <Paragraph>
-                        No short forms/abbreviations to be used in the text.
-                      </Paragraph>
-                    </li>
-                    <li>
-                      <Paragraph>
-                        Make sure there are no spelling mistakes in the content.
-                      </Paragraph>
-                    </li>
-                    <li>
-                      <Paragraph>
-                        Job Description should be concise and crisp - to the
-                        point.
-                      </Paragraph>
-                    </li>
-                  </ul>
-                </styles.Info>
+                <Affix offsetTop={120}>
+                  <styles.Info>
+                    <Title level={5} style={{ color: vars.HeadingColor2 }}>
+                      Few Guidelines
+                    </Title>
+                    <ul>
+                      <li>
+                        <Paragraph>
+                          Proper formatting of the text/content of the posting
+                          with clear spaces and standard bullets (-) to be used.
+                        </Paragraph>
+                      </li>
+                      <li>
+                        <Paragraph>
+                          No short forms/abbreviations to be used in the text.
+                        </Paragraph>
+                      </li>
+                      <li>
+                        <Paragraph>
+                          Make sure there are no spelling mistakes in the
+                          content.
+                        </Paragraph>
+                      </li>
+                      <li>
+                        <Paragraph>
+                          Job Description should be concise and crisp - to the
+                          point.
+                        </Paragraph>
+                      </li>
+                    </ul>
+                  </styles.Info>
+                </Affix>
               </styles.Right>
             </styles.Container>
           </AppContainer>
