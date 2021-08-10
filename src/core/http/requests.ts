@@ -1,38 +1,47 @@
 import axios from 'axios';
-import { Response } from '@/core/types/index.d';
 import config from '@/core/config';
+import Cookies from 'universal-cookie';
 
-function Post(url: string, body: object): Response {
-  axios
-    .post(`${config('ServiceURI')}${url}`, body)
-    .then(res => {
-      console.log(res);
-      return {
-        data: res.data,
-        status: res.status,
-      };
-    })
-    .catch(e => {
-      console.log(e);
-      return undefined;
-    });
+function Post(url: string, body: object): Promise<any> {
+  const cookies = new Cookies();
+  const jwt = cookies.get('session');
 
-  return undefined;
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${config('ServiceURI')}${url}`, body, {
+        headers: {
+          authorization: `BEARER ${jwt}`,
+        },
+      })
+      .then(res => {
+        resolve(res);
+      })
+      .catch(e => {
+        const { response } = e;
+        reject(response);
+      });
+  });
 }
 
-function Get(url: string): Response {
-  axios
-    .get(`${config('ServiceURI')}${url}`)
-    .then(res => ({
-      data: res.data,
-      status: res.status,
-    }))
-    .catch(e => {
-      console.log(e);
-      return undefined;
-    });
+function Get(url: string): Promise<any> {
+  const cookies = new Cookies();
+  const jwt = cookies.get('session');
 
-  return undefined;
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${config('ServiceURI')}${url}`, {
+        headers: {
+          authorization: `BEARER ${jwt}`,
+        },
+      })
+      .then(res => {
+        resolve(res);
+      })
+      .catch(e => {
+        const { response } = e;
+        reject(response);
+      });
+  });
 }
 
 export { Post, Get };

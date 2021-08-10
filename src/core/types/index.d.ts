@@ -14,12 +14,3 @@ export interface CookieMessage extends IncomingMessage {
 export interface CookiesPageContext extends NextPageContext {
   req: CookieMessage | undefined;
 }
-
-export type Response = {
-  data: Record<string, any>;
-  status: number;
-};
-
-export type Config = {
-  ServiceURI: string;
-};

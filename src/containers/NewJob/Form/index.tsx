@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import Typography from 'antd/lib/typography';
-import axios from 'axios';
-import Config from '@/core/config';
 import message from 'antd/lib/message';
 import * as vars from '@/core/theme/vars';
 import Select from 'antd/lib/select';
 import cities from '@/core/data/cities.json';
 import jobcategory from '@/core/data/job_category.json';
 import jobfunction from '@/core/data/job_function.json';
+import skills from '@/core/data/skills.json';
 import Editor, { InitialStateJSON } from '@/components/libs/Editor';
-import { EditorState, convertFromRaw } from 'draft-js';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import { Post } from '@/core/http/requests';
 
 import Button from '@atlaskit/button';
-import { ValidateEmail } from '@/core/validations/email';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import Divider from 'antd/lib/divider';
-// import Editor from '@/components/libs/Editor';
 
 import * as styles from './styles';
 
@@ -26,10 +24,7 @@ const { Option } = Select;
 type Props = {};
 
 type State = {
-  name: string;
-  email: string;
-  company: string;
-  designation: string;
+  posting: boolean;
   editorState: any;
 };
 
@@ -58,90 +53,50 @@ export default class extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      company: '',
-      designation: '',
-      name: '',
+      posting: false,
       editorState: EditorState.createWithContent(
         convertFromRaw(InitialStateJSON),
       ),
     };
   }
 
-  onChange = e => {
+  onChange = (e: Record<string, any>) => {
     this.setState({
       editorState: e,
     });
   };
 
-  handleSubmit = (): void => {
-    const { name, email, designation, company } = this.state;
-
-    axios
-      .post(`${Config('ServiceURI')}/signup`, {
-        Email: email,
-        FirstName: name,
-        CompanyName: company,
-        Designation: designation,
-      })
+  onFinish = (values: Record<string, any>): void => {
+    const { editorState } = this.state;
+    values.summary = convertToRaw(editorState.getCurrentContent()); // eslint-disable-line
+    this.setState({ posting: true });
+    Post('/jobs', values)
       .then(res => {
-        const { status, data } = res;
-        if (data !== undefined && status === 200) {
-          successNotification(
-            `Your account has been created successfully and an confirmation link has been sent on email ${email}. Please click on the link to proceed. `,
+        if (res.status === 200) {
+          successNotification('Job has been posted successfully');
+          setTimeout(() => {
+            this.setState({ posting: false });
+          }, 2000);
+        } else if (res.status === 400) {
+          errorNotification(
+            'Incomplete details provided, please provide complete details!',
           );
-          this.setState({ email: '' });
-        } else {
-          errorNotification(data.error);
+          this.setState({ posting: false });
         }
       })
-      .catch(error => {
-        const { response } = error;
-        if (response !== undefined && response.data !== undefined) {
-          errorNotification(response.data.error);
-        } else {
-          errorNotification('Something went wrong, please try again');
-        }
+      .catch(e => {
+        errorNotification(
+          'Something went wrong while posting the jon, please try again!',
+        );
+        this.setState({ posting: false });
       });
   };
 
-  validateCompany = (value: string): string => {
-    if (value === '') {
-      return 'INCORRECT';
-    }
-    this.setState({ company: value });
-    return undefined;
-  };
-
-  validateName = (value: string): string => {
-    if (value === '') {
-      return 'INCORRECT';
-    }
-    this.setState({ name: value });
-    return undefined;
-  };
-
-  validateEmail = (value: string): string => {
-    if (!ValidateEmail(value)) {
-      return 'INCORRECT';
-    }
-    this.setState({ email: value });
-    return undefined;
-  };
-
-  validateDesignation = (value: string): string => {
-    if (value === '') {
-      return 'INCORRECT';
-    }
-    this.setState({ designation: value });
-    return undefined;
-  };
-
   render(): any {
-    const { editorState } = this.state;
+    const { editorState, posting } = this.state;
     return (
       <styles.Root>
-        <Form layout="vertical" size="large">
+        <Form onFinish={this.onFinish} layout="vertical" size="large">
           <Title
             level={4}
             style={{
@@ -152,46 +107,44 @@ export default class extends Component<Props, State> {
             Basic Details
           </Title>
           <Divider />
+
           <Form.Item
-            name={['user', 'name']}
+            name="title"
             label="Job Title"
-            rules={[{ required: true }]}
+            rules={[{ required: true, message: 'Job title is required!' }]}
           >
             <Input placeholder="Write a title that appropriately describes this job" />
           </Form.Item>
+
           <Form.Item
-            name="select-multiple"
+            name="locations"
             label="Location"
             rules={[
               {
                 required: true,
-                message: 'Please select the jnb location!',
+                message: 'Please select one or more job location!',
                 type: 'array',
               },
             ]}
           >
             <Select mode="multiple" placeholder="Job location">
               {cities.map(item => (
-                <Option value={item.id}> {item.name}</Option>
+                <Option value={item.name}> {item.name}</Option>
               ))}
             </Select>
           </Form.Item>
-          <Form.Item
-            name="select-multiple"
-            label="Years of experience"
-            rules={[
-              {
-                required: true,
-                message: 'Please select the jnb location!',
-                // type: 'array',
-              },
-            ]}
-          >
+
+          <Form.Item label="Years of experience">
             <Input.Group>
               <Form.Item
-                name={['address', 'province']}
+                name="minExperience"
                 noStyle
-                rules={[{ required: true, message: 'Province is required' }]}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Minimum experience  is required!',
+                  },
+                ]}
               >
                 <Select
                   placeholder="Select Min Experience"
@@ -203,9 +156,14 @@ export default class extends Component<Props, State> {
                 </Select>
               </Form.Item>
               <Form.Item
-                name={['address', 'province']}
+                name="maxExperience"
                 noStyle
-                rules={[{ required: true, message: 'Province is required' }]}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Maximum experience  is required!',
+                  },
+                ]}
               >
                 <Select
                   placeholder="Select Max Experience"
@@ -218,7 +176,8 @@ export default class extends Component<Props, State> {
               </Form.Item>
             </Input.Group>
           </Form.Item>
-          <Form.Item name="select-multiple" label="Job Description" rules={[]}>
+
+          <Form.Item label="Job Description">
             <Form.Item>
               <Editor
                 border
@@ -240,133 +199,114 @@ export default class extends Component<Props, State> {
           </Title>
           <Divider />
 
-          <Form.Item
-            name="select-multiple"
-            label="Employment Type"
-            rules={[
-              {
-                required: true,
-                message: 'Please select the jnb location!',
-                // type: 'array',
-              },
-            ]}
-          >
+          <Form.Item label="Employment Type">
             <Form.Item
-              name={['address', 'province']}
               noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
+              name="employmentType"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select employment type!',
+                  type: 'array',
+                },
+              ]}
             >
-              <Select placeholder="Select Employment Type">
-                <Option value="1"> Full Time </Option>
-                <Option value="2"> Part Time </Option>
-                <Option value="3"> Internship </Option>
-                <Option value="4"> Certificate </Option>
+              <Select mode="multiple" placeholder="Select Employment Type">
+                <Option value="Full Time"> Full Time </Option>
+                <Option value="Part Time"> Part Time </Option>
+                <Option value="Internship"> Internship </Option>
+                <Option value="Certificate"> Certificate </Option>
               </Select>
             </Form.Item>
           </Form.Item>
-          <Form.Item
-            name="select-multiple"
-            label="Job Category"
-            rules={[
-              {
-                required: true,
-                message: 'Please select the job category!',
-                // type: 'array',
-              },
-            ]}
-          >
+
+          <Form.Item label="Job Category">
             <Form.Item
-              name={['address', 'province']}
+              name="category"
               noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select the job category!',
+                },
+              ]}
             >
               <Select placeholder="Select Job Category">
                 {jobcategory.map(item => (
-                  <Option value={item.id}> {item.name}</Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </Form.Item>
-          <Form.Item
-            name="select-multiple"
-            label="Job Function"
-            rules={[
-              {
-                required: true,
-                message: 'Please select the jnb location!',
-                // type: 'array',
-              },
-            ]}
-          >
-            <Form.Item
-              name={['address', 'province']}
-              noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
-            >
-              <Select placeholder="Select Job Function">
-                {jobfunction.map(item => (
-                  <Option value={item.id}> {item.name}</Option>
+                  <Option value={item.name}> {item.name}</Option>
                 ))}
               </Select>
             </Form.Item>
           </Form.Item>
 
           <Form.Item
-            name="select-multiple"
+            label="Job Function"
+            name="function"
+            rules={[
+              {
+                required: true,
+                message: 'Please select the job function!',
+              },
+            ]}
+          >
+            <Select placeholder="Select Job Function">
+              {jobfunction.map(item => (
+                <Option value={item.name}> {item.name}</Option>
+              ))}
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            name="mustHaveSkills"
             label="Must Have Skills"
             rules={[
               {
                 required: true,
-                message: 'Please select Must Have Skills',
+                message: 'Please select one or more Must Have Skills',
                 type: 'array',
               },
             ]}
           >
             <Select mode="multiple" placeholder="Must Have Skills">
-              {cities.map(item => (
-                <Option value={item.id}> {item.name}</Option>
+              {skills.map(item => (
+                <Option value={item}> {item}</Option>
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
-            name="select-multiple"
+            name="goodToHaveSkills"
             label="Good to Have Skills"
             rules={[
               {
                 required: false,
-                message: 'Please select Must Have Skills',
+                message: 'Please select Good to Have Skills',
                 type: 'array',
               },
             ]}
           >
             <Select mode="multiple" placeholder="Good to Have Skills">
-              {cities.map(item => (
-                <Option value={item.id}> {item.name}</Option>
+              {skills.map(item => (
+                <Option value={item}> {item}</Option>
               ))}
             </Select>
           </Form.Item>
 
           <Input.Group>
-            <Form.Item
-              name={['address', 'province']}
-              noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
-            >
+            <Form.Item noStyle>
               <Button
                 style={{ height: '40px', marginTop: '20px' }}
                 type="submit"
                 shouldFitContainer
                 appearance="primary"
+                isLoading={posting}
               >
                 Post the Job
               </Button>
             </Form.Item>
-            <Form.Item
-              name={['address', 'province']}
-              noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
-            >
+            <Form.Item noStyle>
               <Button
+                href="/"
                 style={{
                   height: '40px',
                   marginTop: '20px',
