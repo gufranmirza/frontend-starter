@@ -44,4 +44,14 @@ function Get(url: string): Promise<any> {
   });
 }
 
-export { Post, Get };
+function GetJWTHeader(): Record<string, any> {
+  const cookies = new Cookies();
+  const jwt = cookies.get('session');
+  return {
+    headers: {
+      authorization: `BEARER ${jwt}`,
+    },
+  };
+}
+
+export { Post, Get, GetJWTHeader };
