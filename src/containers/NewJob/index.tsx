@@ -4,25 +4,32 @@ import Footer from '@/components/common/Footer';
 import * as vars from '@/core/theme/vars';
 import Typography from 'antd/lib/typography';
 import Affix from 'antd/lib/affix';
+import { NextRouter } from 'next/router';
+import { route } from 'next/dist/next-server/server/router';
 import Form from './Form';
 
 import * as styles from './styles';
 
 const { Title, Paragraph } = Typography;
-class Signup extends React.Component {
+
+type Props = {
+  router: NextRouter;
+};
+class Signup extends React.Component<Props, {}> {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render(): any {
+    const { router } = this.props;
     return (
       <div>
         <styles.Root>
           <AppContainer>
             <styles.Container>
               <styles.Left>
-                <Form />
+                <Form router={router} />
               </styles.Left>
               <styles.Right>
                 <Affix offsetTop={120}>

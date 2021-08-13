@@ -79,10 +79,7 @@ const Title: React.FC<{}> = () => (
                 overlay={menu}
                 trigger={['click']}
               >
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.pg">
-                  {' '}
-                  U{' '}
-                </Avatar>
+                <Avatar> U </Avatar>
               </Dropdown>
             </styles.MenuLeft>
           </styles.ButtonsLeft>

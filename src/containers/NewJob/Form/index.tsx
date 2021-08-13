@@ -15,13 +15,16 @@ import Button from '@atlaskit/button';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import Divider from 'antd/lib/divider';
+import { NextRouter } from 'next/router';
 
 import * as styles from './styles';
 
 const { Title } = Typography;
 const { Option } = Select;
 
-type Props = {};
+type Props = {
+  router: NextRouter;
+};
 
 type State = {
   posting: boolean;
@@ -68,15 +71,14 @@ export default class extends Component<Props, State> {
 
   onFinish = (values: Record<string, any>): void => {
     const { editorState } = this.state;
+    const { router } = this.props;
     values.summary = convertToRaw(editorState.getCurrentContent()); // eslint-disable-line
     this.setState({ posting: true });
     Post('/jobs', values)
       .then(res => {
         if (res.status === 200) {
           successNotification('Job has been posted successfully');
-          setTimeout(() => {
-            this.setState({ posting: false });
-          }, 2000);
+          router.push(`/jobs/${res.data.id}`);
         } else if (res.status === 400) {
           errorNotification(
             'Incomplete details provided, please provide complete details!',
