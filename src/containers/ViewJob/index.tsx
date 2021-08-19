@@ -25,7 +25,7 @@ type Props = {
 class ViewJob extends React.Component<Props, State> {
   componentDidMount(): void {
     const { jobID, router, data } = this.props;
-    console.log(jobID, router);
+    console.log(jobID, data);
   }
 
   render(): any {
@@ -36,11 +36,15 @@ class ViewJob extends React.Component<Props, State> {
         <Title level={5} style={{ color: vars.HeadingColor2 }}>
           Locations
         </Title>
-        {data.locations.map((k, v) => (
-          <Paragraph key={k} style={{ marginBottom: '0.3em' }}>
-            <CaretRightOutlined /> {k}
-          </Paragraph>
-        ))}
+        {data.locations !== undefined && (
+          <>
+            {data.locations.map((k, v) => (
+              <Paragraph key={k} style={{ marginBottom: '0.3em' }}>
+                <CaretRightOutlined /> {k}
+              </Paragraph>
+            ))}
+          </>
+        )}
         <Title level={5} style={{ color: vars.HeadingColor2 }}>
           Job Type
         </Title>
@@ -92,25 +96,30 @@ class ViewJob extends React.Component<Props, State> {
                   >
                     Must Have Skills
                   </Title>
-                  {data.mustHaveSkills.map((k, v) => (
-                    <Paragraph
-                      key={k}
-                      style={{
-                        margin: '0px',
-                        display: 'inline-flex',
-                        marginRight: '10px',
-                      }}
-                    >
-                      <FolderOutlined
-                        style={{
-                          fontSize: '20px',
-                          paddingRight: '4px',
-                          color: vars.Blue6,
-                        }}
-                      />{' '}
-                      {k}
-                    </Paragraph>
-                  ))}
+                  {data.mustHaveSkills !== undefined && (
+                    <>
+                      {data.mustHaveSkills.map((k, v) => (
+                        <Paragraph
+                          key={k}
+                          style={{
+                            margin: '0px',
+                            display: 'inline-flex',
+                            marginRight: '10px',
+                          }}
+                        >
+                          <FolderOutlined
+                            style={{
+                              fontSize: '20px',
+                              paddingRight: '4px',
+                              color: vars.Blue6,
+                            }}
+                          />{' '}
+                          {k}
+                        </Paragraph>
+                      ))}
+                    </>
+                  )}
+
                   <Title
                     level={5}
                     style={{
@@ -120,25 +129,29 @@ class ViewJob extends React.Component<Props, State> {
                   >
                     Nice to Have Skills
                   </Title>
-                  {data.goodToHaveSkills.map((k, v) => (
-                    <Paragraph
-                      key={k}
-                      style={{
-                        margin: '0px',
-                        display: 'inline-flex',
-                        marginRight: '10px',
-                      }}
-                    >
-                      <FolderOutlined
-                        style={{
-                          fontSize: '20px',
-                          paddingRight: '4px',
-                          color: vars.Blue6,
-                        }}
-                      />{' '}
-                      {k}
-                    </Paragraph>
-                  ))}
+                  {data.goodToHaveSkills !== undefined && (
+                    <>
+                      {data.goodToHaveSkills.map((k, v) => (
+                        <Paragraph
+                          key={k}
+                          style={{
+                            margin: '0px',
+                            display: 'inline-flex',
+                            marginRight: '10px',
+                          }}
+                        >
+                          <FolderOutlined
+                            style={{
+                              fontSize: '20px',
+                              paddingRight: '4px',
+                              color: vars.Blue6,
+                            }}
+                          />{' '}
+                          {k}
+                        </Paragraph>
+                      ))}
+                    </>
+                  )}
                   <Divider />
                 </styles.Header>
                 <styles.Editor>

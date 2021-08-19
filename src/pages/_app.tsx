@@ -51,7 +51,7 @@ MyApp.getInitialProps = async (
         },
         {
           headers: {
-            Authorization: `BEARER ${request.cookies.session}`,
+            Authorization: `BEARER ${request.cookies.session_id}`,
           },
         },
       )
@@ -65,8 +65,8 @@ MyApp.getInitialProps = async (
         const { response } = err;
         authenticated = false;
         if (response !== undefined && response.status === 401) {
-          cookies.remove('session', { path: '/' });
-          request.cookies.session = undefined;
+          cookies.remove('session_id', { path: '/' });
+          request.cookies.session_id = undefined; // eslint-disable-line
         }
       });
   }

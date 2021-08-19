@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 
 function Post(url: string, body: object): Promise<any> {
   const cookies = new Cookies();
-  const jwt = cookies.get('session');
+  const jwt = cookies.get('session_id');
 
   return new Promise((resolve, reject) => {
     axios
@@ -25,7 +25,7 @@ function Post(url: string, body: object): Promise<any> {
 
 function Get(url: string): Promise<any> {
   const cookies = new Cookies();
-  const jwt = cookies.get('session');
+  const jwt = cookies.get('session_id');
 
   return new Promise((resolve, reject) => {
     axios
@@ -46,7 +46,7 @@ function Get(url: string): Promise<any> {
 
 function GetJWTHeader(): Record<string, any> {
   const cookies = new Cookies();
-  const jwt = cookies.get('session');
+  const jwt = cookies.get('session_id');
   return {
     headers: {
       authorization: `BEARER ${jwt}`,
