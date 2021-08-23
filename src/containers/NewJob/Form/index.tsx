@@ -131,7 +131,10 @@ export default class extends Component<Props, State> {
           >
             <Select mode="multiple" placeholder="Job location">
               {cities.map(item => (
-                <Option value={item.name}> {item.name}</Option>
+                <Option key={item.name} value={item.name}>
+                  {' '}
+                  {item.name}
+                </Option>
               ))}
             </Select>
           </Form.Item>
@@ -153,7 +156,9 @@ export default class extends Component<Props, State> {
                   style={{ width: 'calc(50% - 10px)', marginRight: '10px' }}
                 >
                   {Array.from({ length: 31 }, (x, i) => (
-                    <Option value={i}>{i}</Option>
+                    <Option key={i} value={i}>
+                      {i}
+                    </Option>
                   ))}
                 </Select>
               </Form.Item>
@@ -172,7 +177,9 @@ export default class extends Component<Props, State> {
                   style={{ width: '50%' }}
                 >
                   {Array.from({ length: 31 }, (x, i) => (
-                    <Option value={i}>{i}</Option>
+                    <Option key={i} value={i}>
+                      {i}
+                    </Option>
                   ))}
                 </Select>
               </Form.Item>
@@ -214,10 +221,22 @@ export default class extends Component<Props, State> {
               ]}
             >
               <Select mode="multiple" placeholder="Select Employment Type">
-                <Option value="Full Time"> Full Time </Option>
-                <Option value="Part Time"> Part Time </Option>
-                <Option value="Internship"> Internship </Option>
-                <Option value="Certificate"> Certificate </Option>
+                <Option key="1" value="Full Time">
+                  {' '}
+                  Full Time{' '}
+                </Option>
+                <Option key="2" value="Part Time">
+                  {' '}
+                  Part Time{' '}
+                </Option>
+                <Option key="3" value="Internship">
+                  {' '}
+                  Internship{' '}
+                </Option>
+                <Option key="4" value="Certificate">
+                  {' '}
+                  Certificate{' '}
+                </Option>
               </Select>
             </Form.Item>
           </Form.Item>
@@ -235,7 +254,10 @@ export default class extends Component<Props, State> {
             >
               <Select placeholder="Select Job Category">
                 {jobcategory.map(item => (
-                  <Option value={item.name}> {item.name}</Option>
+                  <Option key={item.name} value={item.name}>
+                    {' '}
+                    {item.name}
+                  </Option>
                 ))}
               </Select>
             </Form.Item>
@@ -253,7 +275,10 @@ export default class extends Component<Props, State> {
           >
             <Select placeholder="Select Job Function">
               {jobfunction.map(item => (
-                <Option value={item.name}> {item.name}</Option>
+                <Option key={item.name} value={item.name}>
+                  {' '}
+                  {item.name}
+                </Option>
               ))}
             </Select>
           </Form.Item>
@@ -271,7 +296,10 @@ export default class extends Component<Props, State> {
           >
             <Select mode="multiple" placeholder="Must Have Skills">
               {skills.map(item => (
-                <Option value={item}> {item}</Option>
+                <Option key={item} value={item}>
+                  {' '}
+                  {item}
+                </Option>
               ))}
             </Select>
           </Form.Item>
@@ -289,7 +317,10 @@ export default class extends Component<Props, State> {
           >
             <Select mode="multiple" placeholder="Good to Have Skills">
               {skills.map(item => (
-                <Option value={item}> {item}</Option>
+                <Option key={item} value={item}>
+                  {' '}
+                  {item}
+                </Option>
               ))}
             </Select>
           </Form.Item>
