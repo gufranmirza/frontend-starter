@@ -10,6 +10,8 @@ import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import Affix from 'antd/lib/affix';
 import { CaretRightOutlined, FolderOutlined } from '@ant-design/icons';
 import Divider from 'antd/lib/divider';
+import config from '@/core/config';
+import Head from 'next/head';
 import * as styles from './styles';
 
 const { Title, Paragraph } = Typography;
@@ -65,6 +67,11 @@ class ViewJob extends React.Component<Props, State> {
 
     return (
       <div>
+        <Head>
+          <title>
+            {data.title} | {config('Product.Name')}
+          </title>
+        </Head>
         <styles.Root>
           <AppContainer>
             <styles.Container>
@@ -87,17 +94,17 @@ class ViewJob extends React.Component<Props, State> {
                     {data.category}
                   </Title>
                   <Divider />
-                  <Title
-                    level={5}
-                    style={{
-                      color: vars.HeadingColor2,
-                      marginTop: '0.4em',
-                    }}
-                  >
-                    Must Have Skills
-                  </Title>
                   {data.mustHaveSkills !== undefined && (
                     <>
+                      <Title
+                        level={5}
+                        style={{
+                          color: vars.HeadingColor2,
+                          marginTop: '0.4em',
+                        }}
+                      >
+                        Must Have Skills
+                      </Title>
                       {data.mustHaveSkills.map((k, v) => (
                         <Paragraph
                           key={k}
@@ -120,17 +127,17 @@ class ViewJob extends React.Component<Props, State> {
                     </>
                   )}
 
-                  <Title
-                    level={5}
-                    style={{
-                      color: vars.HeadingColor2,
-                      marginTop: '1.5em',
-                    }}
-                  >
-                    Nice to Have Skills
-                  </Title>
                   {data.goodToHaveSkills !== undefined && (
                     <>
+                      <Title
+                        level={5}
+                        style={{
+                          color: vars.HeadingColor2,
+                          marginTop: '1.5em',
+                        }}
+                      >
+                        Nice to Have Skills
+                      </Title>
                       {data.goodToHaveSkills.map((k, v) => (
                         <Paragraph
                           key={k}

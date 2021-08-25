@@ -7,6 +7,8 @@ import withAuth from '@/core/components/HOCS/withAuth';
 import axios from 'axios';
 import { GetJWTHeader } from '@/core/http/requests';
 import config from '@/core/config';
+import Head from 'next/head';
+import NotFound from '@/components/common/NotFound';
 
 type Props = {
   data: Record<string, any>;
@@ -18,8 +20,17 @@ const Load: any = (props: Props) => {
 
   return (
     <div>
+      <Head>
+        <title>
+          {config('Product.Name')} - Home | Post Jobs, Hire Best Candidate{' '}
+        </title>
+      </Head>
       <Header />
-      <ViewJob data={props} jobID={String(jobID)} router={router} />
+      {props !== undefined && props.id !== undefined ? ( // eslint-disable-line
+        <ViewJob data={props} jobID={String(jobID)} router={router} />
+      ) : (
+        <NotFound />
+      )}
       <Footer />
     </div>
   );
