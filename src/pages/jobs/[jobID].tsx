@@ -9,6 +9,7 @@ import { GetJWTHeader } from '@/core/http/requests';
 import config from '@/core/config';
 import Head from 'next/head';
 import NotFound from '@/components/common/NotFound';
+import { HasProperty } from '@/core/validations/property';
 
 type Props = {
   data: Record<string, any>;
@@ -26,7 +27,7 @@ const Load: any = (props: Props) => {
         </title>
       </Head>
       <Header />
-      {props !== undefined && props.id !== undefined ? ( // eslint-disable-line
+      {props !== undefined && HasProperty(props, "id") ? ( // eslint-disable-line
         <ViewJob data={props} jobID={String(jobID)} router={router} />
       ) : (
         <NotFound />
