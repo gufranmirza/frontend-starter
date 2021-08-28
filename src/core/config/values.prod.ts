@@ -6,18 +6,18 @@
  */
 
 const values = {
-  ServiceURI: 'https://api.jobbox.ai/recruiter-api/v1',
+  ServiceURI: 'https://api.recruter-api.com/recruiter-api/v1',
   Social: {
-    Mobile: '+91-96637-99660',
-    Email: 'yourfriends@jobbox.ai',
+    Mobile: '+91-12345-06789',
+    Email: 'yourfriends@recruter-api.com',
   },
   Product: {
-    Name: 'Job Box',
+    Name: 'Recruiter API',
   },
   URLs: {
-    RecruiterPortal: 'https://recruiter.jobbox.ai',
-    ApplicationPortal: 'https://app.jobbox.ai',
-    MainPortal: 'https://jobbox.ai',
+    RecruiterPortal: 'https://recruiter.recruter-api.com',
+    ApplicationPortal: 'https://app.recruter-api.com',
+    MainPortal: 'https://recruter-api.com',
   },
 };
 
